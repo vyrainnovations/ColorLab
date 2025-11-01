@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vyra Color Tool - Shades Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/core.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/shades.css" />
+  </head>
+  <body id="shades-page">
+    <!-- Top Notification Area -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Mobile Hamburger Button -->
+    <button
+      class="hamburger"
+      id="hamburgerBtn"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Mobile Navigation Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobileOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-links">
+          <li><a href="index.html">Color Picker</a></li>
+          <li><a href="shades.html">Shades</a></li>
+          <li><a href="gradient.html">Gradient</a></li>
+        </ul>
+        <div class="mobile-theme-toggle">
+          <button id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Left Sidebar Navigation -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <h2>🎨 Color Lab</h2>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Color Picker</a></li>
+        <li><a href="shades.html" class="active" >Shades</a></li>
+        <li><a href="gradient.html">Gradient</a></li>
+      </ul>
+      <div class="theme-toggle">
+        <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Header -->
+        <header class="page-header">
+          <h1>🎨 Shades Generator</h1>
+          <p>Generate beautiful tints and shades from any color</p>
+        </header>
+
+        <!-- Base Color Input Section -->
+        <section class="shades-input-section glass-card">
+          <h3>Base Color</h3>
+          <div
+            class="color-input-enhanced"
+          >
+            <div
+              class="color-preview-circle"
+              id="baseColorPreview"
+
+            ></div>
+            <input type="color" id="baseColorPicker" value="#7B61FF" />
+            <label for="baseColorPicker">Click to pick color</label>
+            <input
+              type="text"
+              id="baseColorHex"
+              placeholder="#7B61FF"
+              value="#7B61FF"
+                class="hex-input"
+            />
+          </div>
+          <button
+            class="btn btn-primary"
+            id="generateShadesBtn"
+
+          >
+            ✨ Generate Shades
+          </button>
+        </section>
+
+        <!-- Shades Output Section -->
+        <section class="shades-output-section">
+          <div id="shadesGrid" class="shades-grid">
+            <!-- Shades will be generated here -->
+          </div>
+        </section>
+
+        <!-- User Palette Section -->
+        <section class="palette-section glass-card">
+          <h3>Your Palette</h3>
+          <div id="paletteContainer" class="palette-grid">
+            <p class="empty-message">Add colors to build your palette</p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <img
+            src="assets/logo.png"
+            alt="Vyra Innovations"
+            class="footer-logo"
+          />
+
+          <div class="social-links">
+            <!-- social icons omitted for brevity -->
+          </div>
+
+          <a href="#top" class="back-to-top">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+
+            >
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+            BACK TO TOP
+          </a>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#web">Our Main Website</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>Copyright © 2025, Vyra Innovations All Rights Reserved.</p>
+    </div>
+    <script type="module">
+  import { initThemeToggle, initMobileNavigation, initScrollReveal, loadPalette, renderPalette } from './js/main.js';
+  import { initShadesGenerator } from './js/shades.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Load palette from sessionStorage first
+        loadPalette();
+        
+        // Initialize common features
+        initThemeToggle();
+        initMobileNavigation();
+        initScrollReveal();
+        
+        // Initialize page-specific features
+        initShadesGenerator();
+        renderPalette();
+      });
+    </script>
+  </body>
+</html>
