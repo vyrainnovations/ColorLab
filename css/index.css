@@ -1,0 +1,212 @@
+/* Page-specific styles for index.html (Color Picker) */
+
+/* Canvas & picker */
+.picker-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.canvas-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+#colorCanvas {
+  border-radius: 12px;
+  cursor: crosshair;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.crosshair {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6), inset 0 0 6px rgba(0, 0, 0, 0.6);
+  display: none;
+  transition: left 0.05s ease-in-out, top 0.05s ease-in-out;
+}
+
+.crosshair.visible {
+  display: block;
+}
+
+/* Color info & values */
+.color-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.color-preview {
+  width: clamp(60px, 15vw, 80px);
+  height: clamp(60px, 15vw, 80px);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  background: #7b61ff;
+  flex-shrink: 0;
+}
+
+.color-values {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.value-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.value-item label {
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.value-item input {
+  padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 12px);
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  width: clamp(140px, 35vw, 170px);
+}
+
+.copy-button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.copy-btn-hex,
+.copy-btn-rgb {
+  flex: 1;
+  min-width: clamp(90px, 20vw, 110px);
+}
+
+/* Image upload & preview */
+.upload-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.image-preview-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#imageUpload {
+  display: none;
+}
+
+.image-preview-container {
+  display: none;
+}
+
+#imageCanvas {
+  width: auto;
+  height: 100%;
+  max-width: 820px; /* allow much larger previews on wide screens */
+  max-width: calc(80vh); /* keep image within viewport height */
+  border-radius: 12px;
+  cursor: crosshair;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Eyedropper tooltip used by index only */
+.eyedropper-tooltip {
+  position: fixed;
+  background: var(--bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: clamp(12px, 2.5vw, 16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  min-width: 180px;
+}
+
+.eyedropper-tooltip.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.tooltip-color-preview {
+  width: clamp(40px, 10vw, 48px);
+  height: clamp(40px, 10vw, 48px);
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-color-codes {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.tooltip-color-codes div {
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  color: var(--text-primary);
+  margin: 4px 0;
+}
+
+.tooltip-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tooltip-actions button {
+  padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 14px);
+  background: var(--primary-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: clamp(0.75rem, 2vw, 0.8rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.tooltip-actions button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(123, 97, 255, 0.4);
+}
+
+.tooltip-actions button:last-child {
+  background: var(--button-accent);
+}

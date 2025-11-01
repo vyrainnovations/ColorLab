@@ -1,0 +1,91 @@
+/* Page-specific styles for shades.html (Shades Generator) */
+
+.shades-input-section .color-input-enhanced {
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+#generateShadesBtn {
+  display: block;
+  margin: 0 auto;
+}
+
+.shades-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(100px, 25vw, 120px), 1fr)
+  );
+  gap: clamp(12px, 3vw, 16px);
+}
+
+.shade-tile {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: clamp(10px, 2vw, 12px);
+  text-align: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.3s ease forwards;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.shade-tile:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.shade-color {
+  width: 100%;
+  height: clamp(60px, 15vw, 80px);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.shade-info {
+  font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.shade-hex {
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.shade-rgb {
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.shade-tile .btn {
+  width: 100%;
+  padding: clamp(6px, 1.5vw, 8px);
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+}
+
+  /* Hex input field styling */
+  .hex-input {
+    width: 120px;
+    padding: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+  }
